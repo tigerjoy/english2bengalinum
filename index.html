@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/semantic.css">
+    <title>English to Bengali Numbers</title>
+</head>
+<body>
+    <div class="ui horizontal divider">
+        <div class="ui huge header">
+            English-2-Bengali Number
+        </div>
+    </div>
+    <div class="ui raised very container segment">
+        <button id="clear-button" class="huge ui basic positive right floated button">
+            <i class="eraser icon"></i>Clear
+        </button>
+        <h2 class="ui dividing header">INPUT</h2>
+        <div class="ui huge form" id="input-form">
+            <div class="required field">
+                <label>English Number</label>
+                <input id="english-number" placeholder="This value must be a number" type="text">
+            </div>
+            <div class="ui error message">
+                <div class="header" id="error-header"></div>
+                <p id="error-message"></p>
+            </div>
+        </div>
+    </div>
+    <div class="ui raised very container segment">
+        <h2 class="ui dividing header">OUTPUT</h2>
+        <div class="ui huge form">
+            <div class="field">
+                <label>Bengali Number</label>
+                <input id="bengali-number" type="text" readonly>
+            </div>
+            <div class="field">
+                <label>Bengali Number in Words</label>
+                <textarea rows="3" id="bengali-words" readonly></textarea>
+            </div>
+            <div class="field">
+                <label>Bengali-to-English Pronunciation</label>
+                <textarea rows="3" id="english-pronunciation" readonly></textarea>
+            </div>
+        </div>
+    </div>
+    <script src="./js/jquery.js"></script>
+    <script src="./js/semantic.min.js"></script>
+    <script src="./js/main.js"></script>
+</body>
+</html>
