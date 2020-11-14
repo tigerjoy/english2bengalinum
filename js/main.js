@@ -69,6 +69,8 @@ function numberToWords(number){
 
         bengaliNumber = res.charAt(0) !== ',' ? res : res.replace(",", "");
 
+        var multipleDigits = false;
+
         if(num <= 999999999){
             var bengaliWords = "";
             var englishSpell = "";
@@ -79,6 +81,7 @@ function numberToWords(number){
 
             var croreNum = Math.floor(num / 10000000);
             if(croreNum !== 0){
+                multipleDigits = true;
                 bengaliWords += bengaliNumbers[croreNum] + " কটি ";
                 englishSpell += englishSpelling[croreNum] + " Koti ";
                 num = num % 10000000;
@@ -88,6 +91,7 @@ function numberToWords(number){
             var lakhNum = Math.floor((num % 1000000) / 100000);
             var lakNum = tenLakhNum * 10 + lakhNum;
             if(lakNum !== 0){
+                multipleDigits = true;
                 bengaliWords += bengaliNumbers[lakNum] + " লক্ষ ";
                 englishSpell += englishSpelling[lakNum] + " Lokkho ";
                 num = num % 100000;
@@ -95,6 +99,7 @@ function numberToWords(number){
 
             lakhNum = Math.floor(num / 100000);
             if(lakhNum !== 0){
+                multipleDigits = true;
                 bengaliWords += bengaliNumbers[lakhNum] + " লক্ষ ";
                 englishSpell += englishSpelling[lakhNum] + " Lokkho ";
                 num = num % 100000;
@@ -104,6 +109,7 @@ function numberToWords(number){
             var thousandthNum = Math.floor((num % 10000) / 1000);
             var thouNum = tenThousandthNum * 10 + thousandthNum;
             if(thouNum !== 0){
+                multipleDigits = true;
                 bengaliWords += bengaliNumbers[thouNum] + " হাজার ";
                 englishSpell += englishSpelling[thouNum] + " Hazar ";
                 num = num % 1000;
@@ -111,6 +117,7 @@ function numberToWords(number){
 
             thousandthNum = Math.floor(num / 1000);
             if(thousandthNum !== 0){
+                multipleDigits = true;
                 bengaliWords += bengaliNumbers[thousandthNum] + " হাজার ";
                 englishSpell += englishSpelling[thousandthNum] + " Hazar ";
                 num = num % 1000;
@@ -118,14 +125,17 @@ function numberToWords(number){
 
             var hundredthNum = Math.floor(num / 100);
             if(hundredthNum !== 0){
+                multipleDigits = true;
                 bengaliWords += bengaliNumbers[hundredthNum] + "শো ";
                 englishSpell += englishSpelling[hundredthNum] + "sho ";
                 num = num % 100;
             }
 
-            if(num <= 99){
-                bengaliWords += bengaliNumbers[num];
-                englishSpell += englishSpelling[num];
+            if(!multipleDigits || num !== 0){
+                if(num <= 99){
+                    bengaliWords += bengaliNumbers[num];
+                    englishSpell += englishSpelling[num];
+                }
             }
 
             result["bengaliNumber"] = bengaliNumber;
