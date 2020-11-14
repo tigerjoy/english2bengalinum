@@ -53,7 +53,7 @@ function numberToWords(number){
     };
     if(isNumeric(number)){
         var num = Number(number);
-        number = num.toString();
+        number = Math.abs(num).toString();
 
         var bengaliNumber = "";
         for(var i = 0; i < number.length; i++){
@@ -69,16 +69,18 @@ function numberToWords(number){
 
         bengaliNumber = res.charAt(0) !== ',' ? res : res.replace(",", "");
 
+        var bengaliWords = "";
+        var englishSpell = "";
+        if(num < 0){
+            bengaliNumber = "-" + bengaliNumber;
+            bengaliWords = "মাইনাস ";
+            englishSpell = "Minus ";
+            num = Math.abs(num);
+        }
+
         var multipleDigits = false;
 
         if(num <= 999999999){
-            var bengaliWords = "";
-            var englishSpell = "";
-            if(num < 0){
-                bengaliWords = "মাইনাস ";
-                englishSpell = "Minus ";
-            }
-
             var croreNum = Math.floor(num / 10000000);
             if(croreNum !== 0){
                 multipleDigits = true;
@@ -144,7 +146,7 @@ function numberToWords(number){
             result["isValid"] = true;
         } else {
             result["errorHeader"] = "Out of range"
-            result["errorMessage"] = "Number is out of range. Enter a number < 100 crores";
+            result["errorMessage"] = "Number is out of range. Enter a number between -100 crores and 100 crores";
             result["isValid"] = false;
         }
     } else {
@@ -168,6 +170,10 @@ function reset(preserveErrorMessage){
 function render(number) {
     number = number.replaceAll(',', '');
     if(number.length !== 0){
+        // Skip rendering any further if - (minus) is typed
+        if(number.length === 1 && number.charAt(0) === '-'){
+            return;
+        }
         var result = numberToWords(number);
         if (result["isValid"]) {
             englishNumberInput.value = numberFormatter.format(number);
