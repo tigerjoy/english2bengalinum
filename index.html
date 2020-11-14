@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/semantic.css">
-    <title>English to Bengali Numbers</title>
+    <title>English to Bengali / Hindi Numbers</title>
 </head>
 <body>
     <div class="ui horizontal divider">
         <div class="ui huge header">
-            English-2-Bengali Number
+            English-2-Bengali-or-Hindi Number
         </div>
     </div>
     <div class="ui raised very container segment">
@@ -26,21 +26,33 @@
                 <div class="header" id="error-header"></div>
                 <p id="error-message"></p>
             </div>
+            <div id="language-field" class="field">
+                <label>Output Language</label>
+                <div class="ui selection dropdown subject">
+                    <input id="language" type="hidden" name="subject">
+                    <div class="default text">Select your output language</div>
+                    <i class="dropdown icon"></i>
+                    <div class="menu">
+                        <div class="item" data-value="Bengali">Bengali (বাংলা)</div>
+                        <div class="item" data-value="Hindi">Hindi (हिंदी)</div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <div class="ui raised very container segment">
         <h2 class="ui dividing header">OUTPUT</h2>
         <div class="ui huge form">
             <div class="field">
-                <label>Bengali Number</label>
-                <input id="bengali-number" type="text" readonly>
+                <label><span class="language">Bengali</span> Number</label>
+                <input id="output-number" type="text" readonly>
             </div>
             <div class="field">
-                <label>Bengali Number in Words</label>
-                <textarea rows="3" id="bengali-words" readonly></textarea>
+                <label><span class="language">Bengali</span> Number in Words</label>
+                <textarea rows="3" id="output-words" readonly></textarea>
             </div>
             <div class="field">
-                <label>Bengali-to-English Pronunciation</label>
+                <label><span class="language">Bengali</span>-to-English Pronunciation</label>
                 <textarea rows="3" id="english-pronunciation" readonly></textarea>
             </div>
         </div>
