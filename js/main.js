@@ -172,6 +172,7 @@ function render(number) {
     if(number.length !== 0){
         // Skip rendering any further if - (minus) is typed
         if(number.length === 1 && number.charAt(0) === '-'){
+            reset(false);
             return;
         }
         var result = numberToWords(number);
